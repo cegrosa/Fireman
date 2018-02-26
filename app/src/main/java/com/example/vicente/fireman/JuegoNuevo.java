@@ -124,26 +124,8 @@ public class JuegoNuevo extends GenericGameActivity {
     public void showEndGame() {
 
         Log.v("xyzyx", "Tu puntuacion:" + score);
-
-        //JuegoNuevo.this.finish();
         Intent intent = new Intent(JuegoNuevo.this, MainActivity.class);
         intent.putExtra("score", score + "");
         startActivity(intent);
-
-
-//        AlertDialog.Builder dialogRemove = new AlertDialog.Builder(JuegoNuevo.this);
-//        dialogRemove.setTitle("Tu puntuación: ");
-//        dialogRemove.setMessage("" + score);
-//        dialogRemove.setPositiveButton("Reiniciar", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialogo1, int id) {
-//
-//            }
-//        });
-//        dialogRemove.setNegativeButton("Cerar", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog1, int id) {
-//                JuegoNuevo.this.finish();
-//            }
-//        });
-//        dialogRemove.show();
     }
 }
