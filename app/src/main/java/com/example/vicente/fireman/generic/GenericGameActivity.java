@@ -12,8 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.vicente.fireman.input.TouchHandler;
 import com.example.vicente.fireman.currentgame.Assets;
+import com.example.vicente.fireman.input.TouchHandler;
 import com.example.vicente.fireman.media.Graphics;
 import com.example.vicente.fireman.view.RenderView;
 

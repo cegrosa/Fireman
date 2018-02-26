@@ -1,15 +1,13 @@
 package com.example.vicente.fireman;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 
+import com.example.vicente.fireman.currentgame.Life;
 import com.example.vicente.fireman.currentgame.Assets;
 import com.example.vicente.fireman.currentgame.Bomberos;
 import com.example.vicente.fireman.currentgame.Fire;
 import com.example.vicente.fireman.currentgame.Fondo;
-import com.example.vicente.fireman.currentgame.Life;
 import com.example.vicente.fireman.generic.GenericGameActivity;
 import com.example.vicente.fireman.currentgame.Peasant;
 
@@ -24,11 +22,13 @@ public class JuegoNuevo extends GenericGameActivity {
     private Fire fire1, fire2, fire3;
     private Life life;
 
-    private int lf = 3;
+    public static JuegoNuevo contextJuegoNuevo;
+
     private int score = 0;
 
     @Override
     public void start() {
+        contextJuegoNuevo = JuegoNuevo.this;
         addGameObject(new Fondo());
 
         bombero = new Bomberos();
@@ -107,21 +107,10 @@ public class JuegoNuevo extends GenericGameActivity {
         boolean collision = f.instersects(b);
 
         if (collision) {
-            lf--;
+            life.lessLife();
 
-            switch (lf) {
-                case 3:
-                    life.setImage(Assets.life1);
-                    break;
-                case 2:
-                    life.setImage(Assets.life2);
-                    break;
-                case 1:
-                    life.setImage(Assets.life3);
-                    break;
-                case 0:
-                    showEndGame();
-                    break;
+            if (life.getLife() <= 0) {
+                showEndGame();
             }
 
             f.setVisible(false);
@@ -135,21 +124,26 @@ public class JuegoNuevo extends GenericGameActivity {
     public void showEndGame() {
 
         Log.v("xyzyx", "Tu puntuacion:" + score);
-        AlertDialog.Builder dialogRemove = new AlertDialog.Builder(JuegoNuevo.this);
-        dialogRemove.setTitle("Tu puntuación: ");
-        dialogRemove.setMessage("" + score);
-        dialogRemove.setPositiveButton("Reiniciar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogo1, int id) {
-                JuegoNuevo.this.finish();
-                Intent intent = new Intent(JuegoNuevo.this, JuegoNuevo.class);
-                startActivity(intent);
-            }
-        });
-        dialogRemove.setNegativeButton("Cerar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog1, int id) {
-                JuegoNuevo.this.finish();
-            }
-        });
-        dialogRemove.show();
+
+        //JuegoNuevo.this.finish();
+        Intent intent = new Intent(JuegoNuevo.this, MainActivity.class);
+        intent.putExtra("score", score + "");
+        startActivity(intent);
+
+
+//        AlertDialog.Builder dialogRemove = new AlertDialog.Builder(JuegoNuevo.this);
+//        dialogRemove.setTitle("Tu puntuación: ");
+//        dialogRemove.setMessage("" + score);
+//        dialogRemove.setPositiveButton("Reiniciar", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialogo1, int id) {
+//
+//            }
+//        });
+//        dialogRemove.setNegativeButton("Cerar", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog1, int id) {
+//                JuegoNuevo.this.finish();
+//            }
+//        });
+//        dialogRemove.show();
     }
 }

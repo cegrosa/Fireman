@@ -31,9 +31,11 @@ public class Bomberos extends GameObject {
         }
 
         if (getTouchHandler().isMoving() && getTouchHandler().isMovingRight()) {
-            this.setSpeedX(2);
+            this.setSpeedX(3);
         } else if (getTouchHandler().isMoving() && getTouchHandler().isMovingLeft()) {
-            this.setSpeedX(-2);
+            this.setSpeedX(-3);
+        }else{
+            this.setSpeedX(0);
         }
     }
 }
