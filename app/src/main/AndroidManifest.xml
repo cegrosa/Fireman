@@ -15,7 +15,7 @@
 
         <activity
             android:configChanges="keyboard|keyboardHidden|orientation"
-            android:name="org.example.android.juego1718.com.example.android.juego1718.JuegoNuevo"
+            android:name="com.example.vicente.fireman.JuegoNuevo"
             android:screenOrientation="landscape">
 
             <intent-filter>
